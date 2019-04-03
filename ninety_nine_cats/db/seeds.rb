@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+c = ['white', 'black','red', 'grey', 'cream']
+s = ['M', 'F']
+10.times do
+    Cat.create!(name:Faker::Name.name, color: c.sample, sex: s.sample, description: Faker::ChuckNorris.fact, birth_date: Date.today-rand(2000) )
+end
