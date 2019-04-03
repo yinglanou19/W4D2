@@ -1,8 +1,18 @@
 <h1>hello!</h1>
 
-<form action="cat_url(cat)" method="post">
-<input type="hidden" name ="_method" value="patch">
+<%  if type == :new
+        action_txt = cats_url
 
+    else
+        action_txt = cat_url(cat)
+    end
+%>
+    
+
+<form action="<%=action_txt%>" method="post">
+<% unless type != :edit %>
+    <input type="hidden" name ="_method" value="patch">
+<% end %>
 <label>name:
     <input type="text" name="cat[name]" value="<%=cat.name%>">
 </label>
@@ -32,7 +42,7 @@
     </textarea>
 </label>
 
-<input type="submit" value="Create a new cat">
+<input type="submit" value="Submit">
 
 
 
