@@ -20,8 +20,12 @@ class CatsController < ApplicationController
     end
     
     def create
-        @cat = Cat.create(cat_params)
-        redirect_to cat_url(@cat)
+        @cat = Cat.new(cat_params)
+        if @cat.save
+            redirect_to cat_url(@cat)
+        else
+            redirect_to new_cat_url
+        end
     end
 
     def edit
@@ -32,7 +36,9 @@ class CatsController < ApplicationController
 
     def update
         @cat = Cat.update(cat_params)
+    
         redirect_to cat_url(@cat)
+       
     end
 
     private
